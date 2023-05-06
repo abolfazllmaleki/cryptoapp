@@ -26,6 +26,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
+/src/app/api/apiKey.ts
 
 # vercel
 .vercel
