@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,SAAS,CAAA;EACL,gBAAgB,EAAE,GAAG;EACrB,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,WAAW,EAAE,2DAA2D;EACxE,WAAW,EAAE,GAAG;CACnB",
+    "sources": [
+        "CoinRow.scss"
+    ],
+    "names": [],
+    "file": "CoinRow.css"
+}
