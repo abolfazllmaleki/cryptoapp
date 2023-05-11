@@ -3,14 +3,14 @@ import axios from 'axios';
 import React from 'react'
 import { useEffect,useState } from 'react';
 import TopCoinsData from './TopCoinsData'
-import styles from './styles/CoinRow.scss'
+import styles from './styles/CoinRow.module.scss'
 
 const page :React.FC = () => {
  
  
     return (
     <div>
-      <div className='styles.coin-row'>
+      <div className={styles.coinrow}>
         <div className='name'>bitcoin</div>
         <div className='price'>$29.283</div>
         <div className='1h'>0.7%</div>
