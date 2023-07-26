@@ -7,6 +7,7 @@ import { Line } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarController, BarElement, PointElement, LineElement, Filler, DatasetController, Title } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 
+
 import styles from './styles/CoinRow.module.scss'
 import { PieController, scales } from 'chart.js/dist';
 ChartJS.register(
@@ -18,22 +19,25 @@ ChartJS.register(
   Tooltip,
 
 )
+interface chartprops{
+  chart:Array<number>
+}
 
 
-const page :React.FC = () => {
+const page :React.FC<chartprops> = ({chart}) => {
   Chart.defaults.scale.grid.display = false;
   Chart.defaults.scale.display=false;
 
   const data = {
 
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun","sddf","sdf"],
+    labels: ['24h','18h','12h','9h','6h','3h','0h'],
     datasets: [
       {
-        label: "First dataset",
-        data: [33, 53, 85, 41, 44, 65,25,0],
+        label: "price",
+        data: [chart[0],chart[2],chart[5],chart[8],chart[11],chart[17],chart[23]],
         fill: false,
-        backgroundColor: "rgba(75,192,192,0.2)",
-        borderColor: "rgba(75,192,192,1)",
+        backgroundColor: "rgba(21, 112, 39)",
+        borderColor: "rgba(21, 112, 39, 0.868)",
         
       },
       

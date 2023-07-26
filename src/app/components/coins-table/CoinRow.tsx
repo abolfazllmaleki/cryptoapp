@@ -13,9 +13,10 @@ interface CoinRowProps{
   price:number
   tf:number,
   marketCap:number,
+  chart:Array<number>
 }
 
-const page :React.FC<CoinRowProps> = ({icon,symbol,coinName,rank,price,tf,marketCap}) => {
+const page :React.FC<CoinRowProps> = ({icon,symbol,coinName,rank,price,tf,marketCap,chart}) => {
 
   const checktf=()=>{
     if(tf<0){
@@ -36,6 +37,7 @@ const page :React.FC<CoinRowProps> = ({icon,symbol,coinName,rank,price,tf,market
  
     return (
     <div>
+
       <div className={styles.coinrow}>
         <div className='name'>{rank} - {coinName} ({symbol})
          <img className={styles.logo} src={icon}/>
@@ -43,7 +45,7 @@ const page :React.FC<CoinRowProps> = ({icon,symbol,coinName,rank,price,tf,market
         <div className='price'>${Number(price).toFixed(2)}</div>
         <div className='market'>${setNum(marketCap)}</div>
         {checktf()}
-        <div className={styles.chartss}><CoinMiniChart/></div>
+        <div className={styles.chartss}><CoinMiniChart chart={chart}/></div>
 
         
       </div>
