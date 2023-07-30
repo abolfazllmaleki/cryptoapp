@@ -1,0 +1,27 @@
+@import "node_modules/sass-google-fonts/src/GoogleFonts.scss";
+@include google-font( 'Roboto' );
+.Header{
+
+    background-color:rgba(27, 185, 40, 0.568);
+    margin: 0%;
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: small;
+}
+.parts{
+    display: flex;
+    flex-direction: row;
+    color: white;
+    p{
+        padding-left: 10%;
+    }:hover{
+        color: black;
+        transition: 0.2s;
+        cursor:pointer;
+    }
+    
+}

@@ -54,7 +54,7 @@ export let data = {
       fill: true,
       label: '',
       data: [100,101,102,101,103,108,109],
-      borderColor: 'rgba(21, 112, 39, 0.868)',
+      borderColor: '#336600',
       backgroundColor: 'rgba(27, 185, 40, 0.568)',
     },
   ],

@@ -6,8 +6,17 @@ export const GetToday = ()=>{
         month: 'long',
         day: 'numeric',
       };
-    let day = date.getDay()
+    let day = date.getDay()+2
+    let lastDay;
+    if(day==1){
+        lastDay=30
+
+      }else{
+        lastDay=day-1
+
+      }
+    
     let month = new Date().toLocaleString("en-US", { month: "long" })
     
-    return day-1 + '-' +day + ' '+month 
+    return lastDay + '-' +day + ' '+month 
 }

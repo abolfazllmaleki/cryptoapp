@@ -1,19 +1,45 @@
+@import "node_modules/sass-google-fonts/src/GoogleFonts.scss";
+@include google-font( 'Roboto' );
 .overvieww{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin: 5%;
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: small;
+    
+    
 }
+
 .timefield{
     margin: 2%;
+    
+    Button{
+        border:none;
+        border-radius: 10%;
+        padding: 1%;
+        
+    }:hover{
+        background-color:#336600;
+        transition: ease-in 0.2s;
+        color: white;
+    }
+
 }
+
 .charts{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: 70%;
+    width: 90%;
     height: 70%;
 }
-// .info{
-//     margin-left: 10%;
-// }
+.info{
+    background-color:#c0c0c023;
+    padding:5%;
+    height: fit-content;
+    // border: 1px  solid black;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+
+}

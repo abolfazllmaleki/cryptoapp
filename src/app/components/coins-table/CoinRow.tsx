@@ -5,6 +5,7 @@ import { useEffect,useState } from 'react';
 import TopCoinsData from './TopCoinsData'
 import styles from './styles/CoinRow.module.scss'
 import CoinMiniChart from './CoinMiniChart'
+import { useRouter } from 'next/navigation';
 interface CoinRowProps{
   icon:string
   symbol:string
@@ -13,10 +14,12 @@ interface CoinRowProps{
   price:number
   tf:number,
   marketCap:number,
-  chart:Array<number>
+  chart:Array<number>,
+  id:string
 }
 
-const page :React.FC<CoinRowProps> = ({icon,symbol,coinName,rank,price,tf,marketCap,chart}) => {
+const page :React.FC<CoinRowProps> = ({icon,symbol,coinName,rank,price,tf,marketCap,chart,id}) => {
+  const router=useRouter()
 
   const checktf=()=>{
     if(tf<0){
@@ -36,10 +39,10 @@ const page :React.FC<CoinRowProps> = ({icon,symbol,coinName,rank,price,tf,market
     }
  
     return (
-    <div>
+    <div >
 
       <div className={styles.coinrow}>
-        <div className='name'>{rank} - {coinName} ({symbol})
+        <div className={styles.names} onClick={()=>{router.push(`${id}`)}}>{rank} - {coinName} ({symbol})
          <img className={styles.logo} src={icon}/>
           </div>
         <div className='price'>${Number(price).toFixed(2)}</div>

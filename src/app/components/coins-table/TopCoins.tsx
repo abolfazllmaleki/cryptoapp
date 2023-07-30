@@ -48,7 +48,7 @@ const TopCoins :React.FC = () => {
     
     <div>
       {coco?.map(x=>
-      <CoinRow key={x.uuid} icon={x.iconUrl} symbol={x.symbol} coinName={x.name}  price={x.price} rank={x.rank} tf={x.change} marketCap={x.marketCap} chart={x.sparkline}></CoinRow>
+      <CoinRow key={x.uuid} icon={x.iconUrl} symbol={x.symbol} coinName={x.name}  price={x.price} rank={x.rank} tf={x.change} marketCap={x.marketCap} chart={x.sparkline} id={x.uuid}></CoinRow>
       )}
     </div>
     </>

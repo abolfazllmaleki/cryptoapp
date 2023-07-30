@@ -37,7 +37,7 @@ const page :React.FC<chartprops> = ({chart}) => {
         data: [chart[0],chart[2],chart[5],chart[8],chart[11],chart[17],chart[23]],
         fill: false,
         backgroundColor: "rgba(21, 112, 39)",
-        borderColor: "rgba(21, 112, 39, 0.868)",
+        borderColor: "rgba(27, 185, 40, 0.568)",
         
       },
       

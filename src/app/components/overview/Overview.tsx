@@ -6,13 +6,16 @@ import { ConvertToUsd } from '@/app/utils/ConvertToUsd';
 import { Link } from 'react-router-dom';
 
 
-const Overview :React.FC = () => {
+interface OverviewProps{
+  id:string
+}
+const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
 
 
   let [Overview,setOverview]=useState()
   let [Time,setTime]=useState('24h')
   const GetData = async()=>{
-    const response = await fetch (`https://api.coinranking.com/v2/coin/Qwsogvtv82FCd?timePeriod=${Time}`)
+    const response = await fetch (`https://api.coinranking.com/v2/coin/${id}?timePeriod=${Time}`)
     const x= await response.json().then((i)=>{return i.data.coin })
     setOverview(x)
     console.log(Overview)
@@ -63,7 +66,7 @@ const Overview :React.FC = () => {
 
         
         <div className={styles.timefield}>
-          <button onClick={()=>handleTimePeriod(24)}>24h</button>
+          <button onClick={()=>handleTimePeriod(24) }>24h</button>
           <button onClick={()=>handleTimePeriod(7)}>7d</button>
           <button onClick={()=>handleTimePeriod(30)}>1m</button>
           <button onClick={()=>handleTimePeriod(365)}>1y</button>

@@ -1,4 +1,4 @@
-export const ConvertToUsd =(x)=>{
+export const ConvertToUsd =(x:number)=>{
         if(x/1000000000>1){
           return (x/1000000000).toFixed(2) + ' billion'
         }else{
