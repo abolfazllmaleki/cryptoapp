@@ -3,13 +3,43 @@ import React, { useEffect, useState } from 'react'
 import styles from '../overview/styles/Overview.module.scss';
 import { CoinChart } from '../coin-chart/CoinChart';
 import { ConvertToUsd } from '@/app/utils/ConvertToUsd';
+import { useSelector } from "react-redux";
+import { useAppDispatch, RootState, AppDispatch } from "C:/Users/abolfazl/Desktop/projects/crypto project/app/cryptoapp/src/app/store/store";
 import { Link } from 'react-router-dom';
+import {add} from '../../store/portfolio/index'
 
 
 interface OverviewProps{
   id:string
 }
 const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
+  const dispatch: AppDispatch = useAppDispatch();
+  const portfolioData = useSelector((state: RootState) => state)
+  // const  [amount,setamount]=useState()
+  // console.log(portfolioData.portfolioData.transactions[0].coin)
+  const amount=()=>{
+    
+    if(Overview!=undefined){
+
+      let x=0;
+      portfolioData.portfolioData.transactions.forEach(element => {
+
+
+        if(element.coin==Overview.name&&element.transactionType=='buy'){
+
+          x=x+element.amount
+  
+        }else if(element.coin==Overview.name&&element.transactionType=='sell'){
+          x=x-element.amount
+        } 
+      }
+      )
+
+      ;
+      return(x)
+    }
+    
+  }
 
 
   let [Overview,setOverview]=useState()
@@ -61,8 +91,9 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
         
         <p>{Overview!=undefined?Overview.description:'ss'}</p>
         
-
         </div>
+
+
 
         
         <div className={styles.timefield}>
@@ -74,7 +105,15 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
 
         
         <div className={styles.charts}>
+
         {chartP()}
+        <div className={styles.transaction}>
+          <p>balance:{portfolioData.portfolioData.Revenue}$</p>
+          <p>amount of bitcoin:{Overview?amount():'ss'}</p>
+          <input type="number" />
+          <button onClick={()=>dispatch(add({coin:'Bitcoin',amount:20.8,transactionType:'sell'}))}>buy</button>
+          <button>sell</button>
+        </div>
           <div className={styles.info}>
             <p>marketCap:  {Overview!=undefined?ConvertToUsd(Overview.marketCap):'ss'}</p>
             <p>number Of Exchanges:   {Overview!=undefined?Overview.numberOfExchanges:'ss'}</p>

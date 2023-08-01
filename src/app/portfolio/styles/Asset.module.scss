@@ -1,0 +1,62 @@
+@import "node_modules/sass-google-fonts/src/GoogleFonts.scss";
+@include google-font( 'Roboto' );
+.Asset{
+    height: fit-content;
+    width: 15%;
+    min-width: fit-content;
+    border-radius: 8%;
+    padding: 3%;
+    background-color: #c0c0c023;
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: small;
+    button{
+        background-color: #dfdada23;
+        border: none;
+        cursor: pointer;
+        &:hover{
+            
+            transform: scale(1.2);
+        }
+    }
+}
+.revenue{
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: smaller;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+.add{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    button:hover{
+        background-color: rgba(27, 185, 40, 0.568);
+        transition: 0.3s;
+
+    }
+
+}
+.depo{
+    width: 100%;
+    background-color: #c0c0c023;
+    height: 30%;
+}
+.amountinput{
+    display: flex;
+    flex-direction: row;
+}
+.depowith{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    transition: ease-out 0.5s;
+
+}
+.buttonshow{
+    font-size: smaller;
+
+}

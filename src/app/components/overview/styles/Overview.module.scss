@@ -36,10 +36,20 @@
     height: 70%;
 }
 .info{
+    width: 100%;
     background-color:#c0c0c023;
     padding:5%;
+    margin: 1%;
     height: fit-content;
     // border: 1px  solid black;
     box-shadow: 0 3px 3px rgba(0,0,0,0.2);
 
+}
+.transaction{
+    width: 50%;
+    background-color: #c0c0c023;
+    box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+    height: fit-content;
+    padding: 1%;
+    margin: 1%;
 }

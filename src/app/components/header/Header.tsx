@@ -10,7 +10,7 @@ export  const Header:React.FC = ()=>{
 
             <div className={styles.parts}>
                 <p onClick={()=>{router.push('/')}}>Home</p>
-                <p>Portfolio</p>
+                <p onClick={()=>{router.push('/portfolio')}}>Portfolio</p>
                 <p>About</p>
             </div>
             <div className={styles.search}>serasad</div>

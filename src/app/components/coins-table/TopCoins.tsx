@@ -16,7 +16,6 @@ const TopCoins :React.FC = () => {
   let [coins,setCoins]=useState<number>(0)
   const dispatch: AppDispatch = useAppDispatch();
   const coinsData = useSelector((state: RootState) => state.data.data)
-
   const loading = useSelector((state: RootState) => state.data.loading);
   const error = useSelector((state: RootState) => state.data.error);
   useEffect(() => {
