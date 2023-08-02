@@ -7,6 +7,9 @@ import { useSelector } from "react-redux";
 import { useAppDispatch, RootState, AppDispatch } from "C:/Users/abolfazl/Desktop/projects/crypto project/app/cryptoapp/src/app/store/store";
 import { Link } from 'react-router-dom';
 import {add} from '../../store/portfolio/index'
+import { setRevenue } from '../../store/portfolio/index';
+import { Provider } from "react-redux"
+import { store } from '../../store/store'
 
 
 interface OverviewProps{
@@ -14,15 +17,59 @@ interface OverviewProps{
 }
 const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
   const dispatch: AppDispatch = useAppDispatch();
-  const portfolioData = useSelector((state: RootState) => state)
-  // const  [amount,setamount]=useState()
-  // console.log(portfolioData.portfolioData.transactions[0].coin)
+  const portfolioData = useSelector((state: RootState) => state.portfolioData)
+  const  [inputAmount,setinputAmount]=useState<number>()
+  const [inputValue,setinputValue]=useState(0)
+  const[TransactionError,setTransactionError]=useState('off')
+  const [CoinAmount,setCoinAmount]=useState()
+  console.log(portfolioData)
+  const handleTransactionError=()=>{
+    if(TransactionError=='on balance'){
+      return(
+        <p className={styles.Error}>not enough balance</p>
+
+      )
+    }else if(TransactionError=='on coin'){
+      <p className={styles.Error}>not enough {Overview.name}</p>
+
+    }
+
+  }
+
+  const handleInputChange=(e)=>{
+    setinputAmount(e.target.value)
+  }
+
+  const handleTransaction=(x:string)=>{
+    if(x=='buy'){
+      if(portfolioData.Revenue>=Overview.price*inputAmount){
+        dispatch(add({coin:`${Overview.name}`,amount:Number(inputAmount),transactionType:'buy'}));
+        dispatch(setRevenue(portfolioData.Revenue-Overview.price*inputAmount))
+        setTransactionError('off')
+
+      }else{
+        setTransactionError('on balance')
+      }
+
+    }if(x=='sell'){
+      if(amount()>=inputAmount){
+        dispatch(add({coin:`${Overview.name}`,amount:Number(inputAmount),transactionType:'sell'}));
+        dispatch(setRevenue(portfolioData.Revenue+Overview.price*inputAmount))
+        setTransactionError('off')
+
+      }else{
+        setTransactionError('on coin')
+      }
+
+    }
+
+  }
   const amount=()=>{
     
     if(Overview!=undefined){
 
       let x=0;
-      portfolioData.portfolioData.transactions.forEach(element => {
+      portfolioData.transactions.forEach(element => {
 
 
         if(element.coin==Overview.name&&element.transactionType=='buy'){
@@ -48,7 +95,7 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
     const response = await fetch (`https://api.coinranking.com/v2/coin/${id}?timePeriod=${Time}`)
     const x= await response.json().then((i)=>{return i.data.coin })
     setOverview(x)
-    console.log(Overview)
+
     }
 
   useEffect(()=>{
@@ -83,6 +130,7 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
   
   return (
     <>
+
     <div className={styles.overvieww}>
 
     <div >
@@ -108,11 +156,13 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
 
         {chartP()}
         <div className={styles.transaction}>
-          <p>balance:{portfolioData.portfolioData.Revenue}$</p>
-          <p>amount of bitcoin:{Overview?amount():'ss'}</p>
-          <input type="number" />
-          <button onClick={()=>dispatch(add({coin:'Bitcoin',amount:20.8,transactionType:'sell'}))}>buy</button>
-          <button>sell</button>
+          <p>balance:{portfolioData.Revenue}$</p>
+          <p>amount of {Overview?Overview.name:'ss'}:{Overview?amount():'ss'}</p>
+          <input type="number" onChange={handleInputChange}/>
+          <button onClick={()=>handleTransaction('buy')}>buy</button>
+          <button  onClick={()=>handleTransaction('sell')}>sell</button>
+          {handleTransactionError()}
+
         </div>
           <div className={styles.info}>
             <p>marketCap:  {Overview!=undefined?ConvertToUsd(Overview.marketCap):'ss'}</p>
@@ -132,6 +182,7 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
 
 
     </div>
+    
     </>
   )
 }
