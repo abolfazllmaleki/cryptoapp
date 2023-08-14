@@ -92,3 +92,12 @@
     transition: transform 0.1s;
     color: #1e7034;
 }
+.pagebuttons{
+  display: flex;
+  justify-content: center;
+  margin-top: 1%;
+    button{
+    margin: 0.5%;
+    padding: 0.5%;
+  }
+}

@@ -1,7 +1,7 @@
 @import "node_modules/sass-google-fonts/src/GoogleFonts.scss";
 @include google-font( 'Roboto' );
 .Header{
-
+    width: 100vw;
     background-color:rgba(27, 185, 40, 0.568);
     margin: 0%;
     padding: 1%;
@@ -25,3 +25,32 @@
     }
     
 }
+
+.sug{
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    position: absolute;
+    width: 8%;
+    right:0.1%;
+
+    :hover{
+        background-color: rgba(27, 185, 40, 0.568);
+    }
+}
+.sugrow{
+    margin: 1%;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    padding:2%;
+}
+// .logo{
+//     width: 10px;
+//     height: 10px;
+//     margin-top: 10px;
+//     margin-right: 2px;
+//     padding: 2px;
+
+//   }

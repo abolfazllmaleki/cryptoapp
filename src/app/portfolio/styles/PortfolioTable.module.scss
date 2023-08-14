@@ -1,0 +1,46 @@
+@import "node_modules/sass-google-fonts/src/GoogleFonts.scss";
+@include google-font( 'Roboto' );
+.container{
+    position: relative;
+    top: 5%;
+
+    width: 22vw;
+    min-width: fit-content;
+
+    height: fit-content;
+    border-radius: 5%;
+    padding: 5%;
+    font-family: "Roboto";
+    font-weight: 500;
+    font-size: small;
+    background-color: #c0c0c023;
+    margin: 7%;
+
+
+
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid rgba(25, 24, 24, 0.637);
+}
+.small{
+    font-size: smaller;
+
+}
+.logo{
+    width: 20px;
+    height: 20px;
+    margin-top: 20px;
+    margin-right: 5px;
+    padding: 2px;
+
+
+
+  }
+.fullrow{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+}

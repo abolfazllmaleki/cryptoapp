@@ -5,11 +5,12 @@ import { CoinChart } from '../coin-chart/CoinChart';
 import { ConvertToUsd } from '@/app/utils/ConvertToUsd';
 import { useSelector } from "react-redux";
 import { useAppDispatch, RootState, AppDispatch } from "C:/Users/abolfazl/Desktop/projects/crypto project/app/cryptoapp/src/app/store/store";
-import { Link } from 'react-router-dom';
 import {add} from '../../store/portfolio/index'
 import { setRevenue } from '../../store/portfolio/index';
-import { Provider } from "react-redux"
-import { store } from '../../store/store'
+import { GetToday } from '@/app/utils/GetToday';
+import { setAsset } from '../../store/portfolio/index';
+import { addAsset } from '../../store/portfolio/index';
+
 
 
 interface OverviewProps{
@@ -22,6 +23,9 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
   const [inputValue,setinputValue]=useState(0)
   const[TransactionError,setTransactionError]=useState('off')
   const [CoinAmount,setCoinAmount]=useState()
+  const [Date,setDate]=useState((GetToday()).slice(2,-1))
+  console.log(portfolioData.Asset)
+  
   console.log(portfolioData)
   const handleTransactionError=()=>{
     if(TransactionError=='on balance'){
@@ -43,9 +47,20 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
   const handleTransaction=(x:string)=>{
     if(x=='buy'){
       if(portfolioData.Revenue>=Overview.price*inputAmount){
-        dispatch(add({coin:`${Overview.name}`,amount:Number(inputAmount),transactionType:'buy'}));
+        dispatch(add({coin:`${Overview.name}`,amount:Number(inputAmount),transactionType:'buy',date:Date,logo:Overview.iconUrl}));
         dispatch(setRevenue(portfolioData.Revenue-Overview.price*inputAmount))
         setTransactionError('off')
+        let j =0;
+        for(let x =0 ; x<portfolioData.Asset.length;x=x+1){
+          if(portfolioData.Asset[x].coin==Overview.name){
+            
+            dispatch(setAsset([x,inputAmount]))
+            j=j+1
+          }
+        }
+        if(j==0){
+          dispatch(addAsset({coin:Overview.name,amount:inputAmount,logo:Overview.iconUrl,Symbol:Overview.symbol}))
+        }
 
       }else{
         setTransactionError('on balance')
@@ -53,9 +68,16 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
 
     }if(x=='sell'){
       if(amount()>=inputAmount){
-        dispatch(add({coin:`${Overview.name}`,amount:Number(inputAmount),transactionType:'sell'}));
+        dispatch(add({coin:`${Overview.name}`,amount:Number(inputAmount),transactionType:'sell',date:Date,logo:Overview.iconUrl}));
         dispatch(setRevenue(portfolioData.Revenue+Overview.price*inputAmount))
         setTransactionError('off')
+        for(let x =0 ; x<portfolioData.Asset.length;x=x+1){
+          if(portfolioData.Asset[x].coin==Overview.name){
+            
+            dispatch(setAsset([x,-inputAmount]))
+            
+          }
+        }
 
       }else{
         setTransactionError('on coin')
@@ -127,7 +149,7 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
 
 
 
-  
+  console.log(Overview)
   return (
     <>
 

@@ -1,4 +1,5 @@
 import { Header } from "./components/header/Header"
+import { Footer } from "./components/footer/Footer"
 import ThemeProvider from "./app"
 export const metadata = {
   title: 'Next.js',
@@ -15,6 +16,7 @@ export default function RootLayout({
       <body>
         <Header></Header>
         <ThemeProvider>{children}</ThemeProvider>
+        <Footer></Footer>
         
         </body>
     </html>

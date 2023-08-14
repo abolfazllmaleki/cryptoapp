@@ -1,11 +1,15 @@
 @import "node_modules/sass-google-fonts/src/GoogleFonts.scss";
 @include google-font( 'Roboto' );
 .Asset{
-    height: fit-content;
-    width: 15%;
+
+    position: relative;
+    left: 100%;
+    width: 20vw;
     min-width: fit-content;
+
+    height: fit-content;
     border-radius: 8%;
-    padding: 3%;
+    padding: 10%;
     background-color: #c0c0c023;
     font-family: "Roboto";
     font-weight: 500;

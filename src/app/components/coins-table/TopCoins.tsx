@@ -18,14 +18,16 @@ const TopCoins :React.FC = () => {
   const coinsData = useSelector((state: RootState) => state.data.data)
   const loading = useSelector((state: RootState) => state.data.loading);
   const error = useSelector((state: RootState) => state.data.error);
+  let [first,setfirst]=useState(0)
+  let [last,setlast]=useState(7)
   useEffect(() => {
     setTimeout(()=>{
       dispatch(fetchUsers())
 
-      setcoco(coinsData?.slice(0,7))
+      setcoco(coinsData?.slice(first,last))
       
       }     
-    ,2000)
+    ,500)
   }, [dispatch,coinsData]);
 
 
@@ -49,6 +51,10 @@ const TopCoins :React.FC = () => {
       {coco?.map(x=>
       <CoinRow key={x.uuid} icon={x.iconUrl} symbol={x.symbol} coinName={x.name}  price={x.price} rank={x.rank} tf={x.change} marketCap={x.marketCap} chart={x.sparkline} id={x.uuid}></CoinRow>
       )}
+    </div>
+
+    <div className={styles.pagebuttons}>
+      <button onClick={()=>{first>6?setfirst(first-7):'ss',first>6?setlast(last-7):'ss'}}>per</button><button onClick={()=>{first<42?setfirst(first+7):'ss',first<42?setlast(last+7):'ss'}}>next</button>
     </div>
     </>
   )
