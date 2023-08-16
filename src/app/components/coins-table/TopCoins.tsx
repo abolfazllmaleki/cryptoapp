@@ -36,6 +36,9 @@ const TopCoins :React.FC = () => {
   
   return (
     <>
+    <div className={styles.top}>
+      Top Coins
+    </div>
     
     <div className={styles.coinroww}>
         <div className='name'>name</div>

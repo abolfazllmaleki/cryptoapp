@@ -6,13 +6,15 @@ import OverView from './components/overview/Overview'
 import { Provider } from "react-redux"
 import { store } from './store/store'
 import { Header } from './components/header/Header'
+import { Hero } from './components/hero/Hero'
 
 
 const page :React.FC = () => {
   return (
     <>
+    <Hero></Hero>
     
-        <OverView></OverView>
+        
         <TopCoins></TopCoins>
     
     

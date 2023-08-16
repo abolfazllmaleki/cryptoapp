@@ -1,7 +1,7 @@
 @import "node_modules/sass-google-fonts/src/GoogleFonts.scss";
 @include google-font( 'Roboto' );
 .Header{
-    width: 100vw;
+    width: 100%;
     background-color:rgba(27, 185, 40, 0.568);
     margin: 0%;
     padding: 1%;
