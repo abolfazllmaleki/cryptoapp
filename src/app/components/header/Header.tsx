@@ -5,9 +5,9 @@ import { useRouter } from 'next/navigation';
 export  const Header:React.FC = ()=>{
 
     const [suggest,setsuggest]=useState('')
-    const [results,setresults]=useState<object[]>()
+    const [results,setresults]=useState<any>()
 
-    const handleroute=(x)=>{
+    const handleroute=(x:any)=>{
         setsuggest('')
         router.push(`${x.uuid}`)
         console.log(suggest)
@@ -19,7 +19,7 @@ export  const Header:React.FC = ()=>{
             return(
 
             <div className={styles.sug} >
-            {results?.map(x=>
+            {results?.map((x: { name: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; symbol: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; })=>
                     <div className={styles.sugrow} onClick={()=>handleroute(x)}>
                         <p>{x.name}</p>
                         <p>{x.symbol}</p>
@@ -39,7 +39,7 @@ export  const Header:React.FC = ()=>{
     }
     
     const router = useRouter()
-    const handleSearch=(e)=>{
+    const handleSearch=(e: React.ChangeEvent<HTMLInputElement>)=>{
 
         setsuggest(e.target.value)
     
@@ -57,6 +57,10 @@ export  const Header:React.FC = ()=>{
       useEffect(()=>{
         GetData()
       },[suggest])
+    function setsearch(arg0: string): void {
+        throw new Error('Function not implemented.');
+    }
+
     return(
         <div className={styles.Header} >
 

@@ -34,7 +34,7 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
 
       )
     }else if(TransactionError=='on coin'){
-      <p className={styles.Error}>not enough {Overview.name}</p>
+      <p className={styles.Error}>not enough {OverviewState.name}</p>
 
     }
 
@@ -46,20 +46,20 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
 
   const handleTransaction=(x:string)=>{
     if(x=='buy'){
-      if(portfolioData.Revenue>=Overview.price*inputAmount){
-        dispatch(add({coin:`${Overview.name}`,amount:Number(inputAmount),transactionType:'buy',date:Date,logo:Overview.iconUrl}));
-        dispatch(setRevenue(portfolioData.Revenue-Overview.price*inputAmount))
+      if(portfolioData.Revenue>=OverviewState.price*inputAmount){
+        dispatch(add({coin:`${OverviewState.name}`,amount:Number(inputAmount),transactionType:'buy',date:Date,logo:OverviewState.iconUrl}));
+        dispatch(setRevenue(portfolioData.Revenue-OverviewState.price*inputAmount))
         setTransactionError('off')
         let j =0;
         for(let x =0 ; x<portfolioData.Asset.length;x=x+1){
-          if(portfolioData.Asset[x].coin==Overview.name){
+          if(portfolioData.Asset[x].coin==OverviewState.name){
             
             dispatch(setAsset([x,inputAmount]))
             j=j+1
           }
         }
         if(j==0){
-          dispatch(addAsset({coin:Overview.name,amount:inputAmount,logo:Overview.iconUrl,Symbol:Overview.symbol}))
+          dispatch(addAsset({coin:OverviewState.name,amount:inputAmount,logo:OverviewState.iconUrl,Symbol:OverviewState.symbol}))
         }
 
       }else{
@@ -68,11 +68,11 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
 
     }if(x=='sell'){
       if(amount()>=inputAmount){
-        dispatch(add({coin:`${Overview.name}`,amount:Number(inputAmount),transactionType:'sell',date:Date,logo:Overview.iconUrl}));
-        dispatch(setRevenue(portfolioData.Revenue+Overview.price*inputAmount))
+        dispatch(add({coin:`${OverviewState.name}`,amount:Number(inputAmount),transactionType:'sell',date:Date,logo:OverviewState.iconUrl}));
+        dispatch(setRevenue(portfolioData.Revenue+OverviewState.price*inputAmount))
         setTransactionError('off')
         for(let x =0 ; x<portfolioData.Asset.length;x=x+1){
-          if(portfolioData.Asset[x].coin==Overview.name){
+          if(portfolioData.Asset[x].coin==OverviewState.name){
             
             dispatch(setAsset([x,-inputAmount]))
             
@@ -88,17 +88,17 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
   }
   const amount=()=>{
     
-    if(Overview!=undefined){
+    if(OverviewState!=undefined){
 
       let x=0;
       portfolioData.transactions.forEach(element => {
 
 
-        if(element.coin==Overview.name&&element.transactionType=='buy'){
+        if(element.coin==OverviewState.name&&element.transactionType=='buy'){
 
           x=x+element.amount
   
-        }else if(element.coin==Overview.name&&element.transactionType=='sell'){
+        }else if(element.coin==OverviewState.name&&element.transactionType=='sell'){
           x=x-element.amount
         } 
       }
@@ -111,12 +111,12 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
   }
 
 
-  let [Overview,setOverview]=useState()
+  let [OverviewState,setOverviewState]=useState()
   let [Time,setTime]=useState('24h')
   const GetData = async()=>{
     const response = await fetch (`https://api.coinranking.com/v2/coin/${id}?timePeriod=${Time}`)
     const x= await response.json().then((i)=>{return i.data.coin })
-    setOverview(x)
+    setOverviewState(x)
 
     }
 
@@ -142,14 +142,14 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
   
   
   let chartP=()=>{
-    if(Overview!=undefined){
-      return <CoinChart spark={Overview!=undefined?Overview.sparkline:[2,3]} time={Time}/>
+    if(OverviewState!=undefined){
+      return <CoinChart spark={OverviewState!=undefined?OverviewState.sparkline:[2,3]} time={Time}/>
     }
   }
 
 
 
-  console.log(Overview)
+  console.log(OverviewState)
   return (
     <>
 
@@ -157,9 +157,9 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
 
     <div >
         <div className={styles.des}>
-        <h1>{Overview!=undefined?Overview.name:'ss'}</h1>
+        <h1>{OverviewState!=undefined?OverviewState.name:'ss'}</h1>
         
-        <p>{Overview!=undefined?Overview.description:'ss'}</p>
+        <p>{OverviewState!=undefined?OverviewState.description:'ss'}</p>
         
         </div>
 
@@ -179,7 +179,7 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
         {chartP()}
         <div className={styles.transaction}>
           <p>balance:{portfolioData.Revenue}$</p>
-          <p>amount of {Overview?Overview.name:'ss'}:{Overview?amount():'ss'}</p>
+          <p>amount of {OverviewState?OverviewState.name:'ss'}:{OverviewState?amount():'ss'}</p>
           <input type="number" onChange={handleInputChange}/>
           <button onClick={()=>handleTransaction('buy')}>buy</button>
           <button  onClick={()=>handleTransaction('sell')}>sell</button>
@@ -187,12 +187,12 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
 
         </div>
           <div className={styles.info}>
-            <p>marketCap:  {Overview!=undefined?ConvertToUsd(Overview.marketCap):'ss'}</p>
-            <p>number Of Exchanges:   {Overview!=undefined?Overview.numberOfExchanges:'ss'}</p>
-            <p>number Of Markets:  {Overview!=undefined?Overview.numberOfMarkets:'ss'}</p>
-            <p>price:  {Overview!=undefined?ConvertToUsd(Overview.price):'ss'}</p>
-            <p>change:  {Overview!=undefined?Overview.change:'ss'}</p>
-            <p>website:  {Overview!=undefined?<a href={`${Overview.websiteUrl}`}>{Overview.websiteUrl}</a>:'ss'}</p>
+            <p>marketCap:  {OverviewState!=undefined?ConvertToUsd(OverviewState.marketCap):'ss'}</p>
+            <p>number Of Exchanges:   {OverviewState!=undefined?OverviewState.numberOfExchanges:'ss'}</p>
+            <p>number Of Markets:  {OverviewState!=undefined?OverviewState.numberOfMarkets:'ss'}</p>
+            <p>price:  {OverviewState!=undefined?ConvertToUsd(OverviewState.price):'ss'}</p>
+            <p>change:  {OverviewState!=undefined?OverviewState.change:'ss'}</p>
+            <p>website:  {OverviewState!=undefined?<a href={`${OverviewState.websiteUrl}`}>{OverviewState.websiteUrl}</a>:'ss'}</p>
           </div>
             
 

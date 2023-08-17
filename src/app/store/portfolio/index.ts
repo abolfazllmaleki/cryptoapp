@@ -2,32 +2,45 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { stat } from "fs";
 
-interface Coins{
-    Asset:object[],
+interface portfolioDataTypes{
+    Asset:AssetTypes[],
     transactions:object[];
-    Revenue:number
+    Revenue:number;
+    logo:string;
+    amount:number;
 
+
+}
+interface AssetTypes{
+    coin:string;
+    amount:Number;
+    logo:string;
+    Symbol:string;
 
 }
 
   
 
-const initialState:Coins={
-    Asset:[
-        {coin: 'Ethereum', amount: '5', logo: 'https://cdn.coinranking.com/rk4RKHOuW/eth.svg', Symbol: 'ETH'}, 
-        {coin: 'USDC', amount: '80', logo: 'https://cdn.coinranking.com/jkDf8sQbY/usdc.svg', Symbol: 'USDC'}],
-    transactions:[
-        {coin: 'Bitcoin', amount: 10, transactionType: 'buy', date: '5 july', logo: 'https://cdn.coinranking.com/bOabBYkcX/bitcoin_btc.svg'}
-        
-        , 
-        {coin: 'Tether USD', amount: 10, transactionType: 'buy', date: '7 Augus', logo: 'https://cdn.coinranking.com/mgHqwlCLj/usdt.svg'}
-        
-        , 
-        {coin: 'Tether USD', amount: 2, transactionType: 'sell', date: '7 Augus', logo: 'https://cdn.coinranking.com/mgHqwlCLj/usdt.svg'}
-        
-        , 
-        {coin: 'XRP', amount: 8, transactionType: 'buy', date: '7 Augus', logo: 'https://cdn.coinranking.com/B1oPuTyfX/xrp.svg'}],
-    Revenue:10000,
+const initialState:portfolioDataTypes={
+    Asset: [
+        { coin: 'Ethereum', amount: 5, logo: 'https://cdn.coinranking.com/rk4RKHOuW/eth.svg', Symbol: 'ETH' },
+        { coin: 'USDC', amount: 80, logo: 'https://cdn.coinranking.com/jkDf8sQbY/usdc.svg', Symbol: 'USDC' }
+    ],
+    transactions: [
+        { coin: 'Bitcoin', amount: 10, transactionType: 'buy', date: '5 july', logo: 'https://cdn.coinranking.com/bOabBYkcX/bitcoin_btc.svg' },
+
+
+        { coin: 'Tether USD', amount: 10, transactionType: 'buy', date: '7 Augus', logo: 'https://cdn.coinranking.com/mgHqwlCLj/usdt.svg' },
+
+
+        { coin: 'Tether USD', amount: 2, transactionType: 'sell', date: '7 Augus', logo: 'https://cdn.coinranking.com/mgHqwlCLj/usdt.svg' },
+
+
+        { coin: 'XRP', amount: 8, transactionType: 'buy', date: '7 Augus', logo: 'https://cdn.coinranking.com/B1oPuTyfX/xrp.svg' }
+    ],
+    Revenue: 10000,
+    logo: "",
+    amount: 0
 }
 
 
@@ -45,7 +58,7 @@ const portfolioDataSlice=createSlice({
         setAsset:(state,action:PayloadAction<number[]>)=>{
             state.Asset[action.payload[0]].amount=Number(state.Asset[action.payload[0]].amount)+Number(action.payload[1])
         },
-        addAsset:(state,action:PayloadAction<object>)=>{
+        addAsset:(state,action:PayloadAction<AssetTypes>)=>{
             state.Asset.push(action.payload)
 
         }

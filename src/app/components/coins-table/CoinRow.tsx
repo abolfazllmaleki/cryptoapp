@@ -6,6 +6,7 @@ import TopCoinsData from './TopCoinsData'
 import styles from './styles/CoinRow.module.scss'
 import CoinMiniChart from './CoinMiniChart'
 import { useRouter } from 'next/navigation';
+import { FC } from 'react';
 interface CoinRowProps{
   icon:string
   symbol:string
@@ -15,10 +16,10 @@ interface CoinRowProps{
   tf:number,
   marketCap:number,
   chart:Array<number>,
-  id:string
+  id:string|undefined|null|number
 }
 
-const page :React.FC<CoinRowProps> = ({icon,symbol,coinName,rank,price,tf,marketCap,chart,id}) => {
+const page :FC<CoinRowProps> = ({icon,symbol,coinName,rank,price,tf,marketCap,chart,id}) => {
   const router=useRouter()
 
   const checktf=()=>{

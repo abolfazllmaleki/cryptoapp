@@ -6,11 +6,12 @@ import { useAppDispatch, RootState, AppDispatch } from "C:/Users/abolfazl/Deskto
 import { GetToday } from '@/app/utils/GetToday';
 
 
+
 const RecentTransactions:React.FC = ()=>{
     const dispatch: AppDispatch = useAppDispatch();
-const portfolioData = useSelector((state: RootState) => state.portfolioData.transactions.slice(0,5||state.portfolioData.transactions.length))
+const portfolioData :any[]= useSelector((state: RootState) => state.portfolioData.transactions.slice(0,5||state.portfolioData.transactions.length))
     
-    console.log(portfolioData)
+
 
 
 

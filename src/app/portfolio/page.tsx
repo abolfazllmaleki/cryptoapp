@@ -8,10 +8,12 @@ import  RecentTransactions  from '../components/recent-transactions/RecentTransa
 import styles from './styles/page.module.scss'
 import PortfolioTable from '../portfolio/components/PortfolioTable'
 
+
 const page :React.FC = () => {
   
 
   return (
+    <>
     <div className={styles.container}> 
       
       <div className={styles.chart}>
@@ -23,8 +25,11 @@ const page :React.FC = () => {
       <Asset/>
       <RecentTransactions/>
       </div>
+      
+
 
     </div>
+    </>
   )
 }
 

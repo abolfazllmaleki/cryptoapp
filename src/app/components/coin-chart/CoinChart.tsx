@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { FC } from 'react';
 import { GetToday } from '@/app/utils/GetToday';
 import {
   Chart as ChartJS,
@@ -61,7 +61,13 @@ export let data = {
   ],
 };
 
-export function CoinChart({spark,time}) {
+
+interface CoinChartProps{
+  spark:number[],
+  time:string
+}
+
+export const CoinChart:FC<CoinChartProps>=({spark,time}) =>{
   ChartJS.defaults.scale.grid.display = false;
   switch(time){
     case '24h':
