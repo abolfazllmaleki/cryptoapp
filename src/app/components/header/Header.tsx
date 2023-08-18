@@ -14,7 +14,7 @@ export  const Header:React.FC = ()=>{
         
     }
     const show = ()=>{
-        const router=useRouter()
+       
         if(suggest!=''){
             return(
 
