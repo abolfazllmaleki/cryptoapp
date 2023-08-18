@@ -18,15 +18,16 @@ interface OverviewProps{
 }
 const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
   const dispatch: AppDispatch = useAppDispatch();
-  const portfolioData = useSelector((state: RootState) => state.portfolioData)
-  const  [inputAmount,setinputAmount]=useState<number>()
+  const portfolioData:any = useSelector((state: RootState) => state.portfolioData)
+  const  [inputAmount,setinputAmount]=useState<any>()
   const [inputValue,setinputValue]=useState(0)
   const[TransactionError,setTransactionError]=useState('off')
   const [CoinAmount,setCoinAmount]=useState()
   const [Date,setDate]=useState((GetToday()).slice(2,-1))
-  console.log(portfolioData.Asset)
+  let [OverviewState,setOverviewState]=useState<any>()
+
   
-  console.log(portfolioData)
+  
   const handleTransactionError=()=>{
     if(TransactionError=='on balance'){
       return(
@@ -34,13 +35,13 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
 
       )
     }else if(TransactionError=='on coin'){
-      <p className={styles.Error}>not enough {OverviewState.name}</p>
+      <p className={styles.Error}>not enough {OverviewState&&OverviewState.name}</p>
 
     }
 
   }
 
-  const handleInputChange=(e)=>{
+  const handleInputChange=(e:any)=>{
     setinputAmount(e.target.value)
   }
 
@@ -86,12 +87,12 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
     }
 
   }
-  const amount=()=>{
+  const amount:any=()=>{
     
     if(OverviewState!=undefined){
 
       let x=0;
-      portfolioData.transactions.forEach(element => {
+      portfolioData.transactions.forEach((element: { coin: any; transactionType: string; amount: number; }) => {
 
 
         if(element.coin==OverviewState.name&&element.transactionType=='buy'){
@@ -111,7 +112,7 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
   }
 
 
-  let [OverviewState,setOverviewState]=useState()
+
   let [Time,setTime]=useState('24h')
   const GetData = async()=>{
     const response = await fetch (`https://api.coinranking.com/v2/coin/${id}?timePeriod=${Time}`)
@@ -125,7 +126,7 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
   },[Time])
 
 
-  const handleTimePeriod=(x)=>{
+  const handleTimePeriod=(x: number)=>{
 
     switch(x){
       case 24:setTime('24h')

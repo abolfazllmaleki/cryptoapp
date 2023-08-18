@@ -23,8 +23,10 @@ const PortfolioTable:React.FC = () => {
                 {portfolioData.map(i=>
                 <div className={styles.fullrow}>
                     <img className={styles.logo} src={i.logo}/>
-                    <div className={styles.row}>  
-                          <p>{i.coin}</p><p> {i.amount} {i.Symbol}</p>
+                    <div className={styles.row}> 
+                    
+                          <p>{i.coin}</p><p>{i.amount} {i.Symbol}</p> 
+                    
 
                     </div>
 
