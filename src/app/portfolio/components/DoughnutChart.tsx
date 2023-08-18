@@ -8,7 +8,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 
 export const data = {
-  labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+  labels: ['bitcoin', 'etherum', 'Tether ', 'USDC', 'XRP', 'BNB'],
   datasets: [
     {
       label: '# of Votes',

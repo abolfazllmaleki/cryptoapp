@@ -33,9 +33,11 @@
     position: absolute;
     width: 8%;
     right:0.1%;
+    cursor: pointer;
 
     :hover{
         background-color: rgba(27, 185, 40, 0.568);
+        cursor: pointer;
     }
 }
 .sugrow{
@@ -45,12 +47,17 @@
     flex-direction: row;
     justify-content: space-between;
     padding:2%;
+    cursor: pointer;
 }
-// .logo{
-//     width: 10px;
-//     height: 10px;
-//     margin-top: 10px;
-//     margin-right: 2px;
-//     padding: 2px;
 
-//   }
+.search{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+    .searchl{
+        margin-right: 5px;
+        color: white;
+    }
+}

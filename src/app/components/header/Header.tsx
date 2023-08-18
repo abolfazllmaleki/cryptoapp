@@ -70,7 +70,8 @@ export  const Header:React.FC = ()=>{
                 <p>About</p>
             </div>
             <div className={styles.search}>
-                {/* <label>search:</label> */}
+         
+                <p className={styles.searchl}>search:</p>
                 <form onSubmit={()=>setsearch('search...')}>
                 <input onChange={(e)=>handleSearch(e)} value={suggest} ></input>
                     {show()}
