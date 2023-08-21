@@ -21,10 +21,12 @@ ChartJS.register(
 )
 interface chartprops{
   chart:Array<number>
+  color:string
+  backgroundColor:string
 }
 
 
-const page :React.FC<chartprops> = ({chart}) => {
+const page :React.FC<chartprops> = ({chart,color,backgroundColor}) => {
   Chart.defaults.scale.grid.display = false;
   Chart.defaults.scale.display=false;
 
@@ -36,8 +38,8 @@ const page :React.FC<chartprops> = ({chart}) => {
         label: "price",
         data: [chart[0],chart[2],chart[5],chart[8],chart[11],chart[17],chart[23]],
         fill: false,
-        backgroundColor: "rgba(21, 112, 39)",
-        borderColor: "rgba(27, 185, 40, 0.568)",
+        backgroundColor: `${backgroundColor}`,
+        borderColor: `${color}`,
         
       },
       

@@ -8,6 +8,7 @@ interface portfolioDataTypes{
     Revenue:number;
     logo:string;
     amount:number;
+  
 
 
 }
@@ -16,6 +17,7 @@ interface AssetTypes{
     amount:Number;
     logo:string;
     Symbol:string;
+
 
 }
 
@@ -40,7 +42,8 @@ const initialState:portfolioDataTypes={
     ],
     Revenue: 10000,
     logo: "",
-    amount: 0
+    amount: 0,
+
 }
 
 
@@ -61,7 +64,8 @@ const portfolioDataSlice=createSlice({
         addAsset:(state,action:PayloadAction<AssetTypes>)=>{
             state.Asset.push(action.payload)
 
-        }
+        },
+
         
     },
 

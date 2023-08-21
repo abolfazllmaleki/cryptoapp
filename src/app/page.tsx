@@ -12,9 +12,7 @@ import { Hero } from './components/hero/Hero'
 const page :React.FC = () => {
   return (
     <>
-    <Hero></Hero>
-    
-        
+        <Hero></Hero>  
         <TopCoins></TopCoins>
     
     

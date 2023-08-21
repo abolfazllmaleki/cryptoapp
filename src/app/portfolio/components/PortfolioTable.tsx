@@ -20,12 +20,13 @@ const PortfolioTable:React.FC = () => {
         <div className={styles.container}>
             <div>Portfolio</div>
             <div>
-                {portfolioData.map(i=>
+                {portfolioData.map((i:{logo:any;coin:any;amount:any;Symbol:any})=>
                 <div className={styles.fullrow}>
                     <img className={styles.logo} src={i.logo}/>
                     <div className={styles.row}> 
                     
-                          <p>{i.coin}</p><p>{i.amount} {i.Symbol}</p> 
+                          <p>{i.coin}</p>
+                          <p>{i.amount} {i.Symbol}</p> 
                     
 
                     </div>

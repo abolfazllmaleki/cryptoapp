@@ -21,11 +21,17 @@ interface CoinRowProps{
 
 const page :FC<CoinRowProps> = ({icon,symbol,coinName,rank,price,tf,marketCap,chart,id}) => {
   const router=useRouter()
+  const [color,setcolor]= useState(tf<0?'rgba(255,0,0)':'rgba(0,255,0)')
+  const [backgroundColor,setbackgroundColor]= useState(tf<0?'rgba(255,0,0)':'rgba(0,255,0)')
+
+  
 
   const checktf=()=>{
     if(tf<0){
+
       return <div className={styles.tfred} > {tf}</div>
     }else{
+
       return <div className={styles.tfgreen} >+{tf}</div>
     }
   }
@@ -49,7 +55,7 @@ const page :FC<CoinRowProps> = ({icon,symbol,coinName,rank,price,tf,marketCap,ch
         <div className='price'>${Number(price).toFixed(2)}</div>
         <div className='market'>${setNum(marketCap)}</div>
         {checktf()}
-        <div className={styles.chartss}><CoinMiniChart chart={chart}/></div>
+        <div className={styles.chartss}><CoinMiniChart chart={chart} color={color} backgroundColor={backgroundColor}/></div>
 
         
       </div>

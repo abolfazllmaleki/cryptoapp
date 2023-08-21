@@ -4,7 +4,7 @@
 
 .coinrow {
 
-    background-color: rgb(255, 255, 255);
+    background-color: transparent;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -16,17 +16,22 @@
     height: 100%;
     font-family: "Roboto";
     font-weight: 500;
-    color:#333300;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.134);
-    border-top: 1px solid rgba(0, 0, 0, 0.134);
+    border-color: unset;
+
+    border-bottom: 1px solid ;
+    border-top: 1px solid ;
     font-size: 0.8rem;
+    animation: chart;
+    animation-duration: 1s;
+    color:unset;
 
 
   }
 .coinroww {
     transition: ease-out 0.8s;
+    color: transparent;
 
-    background-color: rgb(255, 255, 255);
+    background-color: transparent;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -40,8 +45,11 @@
     padding-bottom: 5px;
     font-weight:900;
     font-size: 0.8rem;
-    color:#333300;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.134);
+    color: unset;
+    border-bottom: 1px solid ;
+    border-color: unset;
+
+
 
 
 
@@ -55,6 +63,7 @@
     margin:1% ;
     font-size: 1.5rem;
     letter-spacing: 1dvw;
+    color: unset;
     // width: fit-content;
     // // border: 1px solid black;
     // padding: 1%;
@@ -83,13 +92,14 @@
     height: 8%;
     width: 10%;
     padding-right:10px ;
+    color: unset;
 
   }
   .tfred{
-    color: red;
+    color: rgba(255,0,0);
   }
   .tfgreen{
-    color: green;
+    color: rgba(0,255,0);
   }
 
 
@@ -104,7 +114,7 @@
   
     transform: scale(1.05);
     transition: transform 0.1s;
-    color: #1e7034;
+    color: #4539b6;
     cursor: pointer;
     
 }
@@ -115,13 +125,25 @@
   justify-content: center;
   margin-top: 1%;
     button{
-    background-color: white;
+    background-color: transparent;
+    color: unset;
     margin: 0.5%;
     padding: 0.5%;
-    border: 1px solid rgba(0, 0, 0, 0.44);
+    border: 1px solid unset;
     border-radius: 20%;
   }:active{
 
-    background-color: #1e7034;
+    background-color: #1e1e70;
   }
+}
+
+
+@keyframes chart{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+
 }

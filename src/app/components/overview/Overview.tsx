@@ -4,12 +4,14 @@ import styles from '../overview/styles/Overview.module.scss';
 import { CoinChart } from '../coin-chart/CoinChart';
 import { ConvertToUsd } from '@/app/utils/ConvertToUsd';
 import { useSelector } from "react-redux";
-import { useAppDispatch, RootState, AppDispatch } from "C:/Users/abolfazl/Desktop/projects/crypto project/app/cryptoapp/src/app/store/store";
+import { useAppDispatch, RootState, AppDispatch } from "../../store/store";
 import {add} from '../../store/portfolio/index'
 import { setRevenue } from '../../store/portfolio/index';
 import { GetToday } from '@/app/utils/GetToday';
 import { setAsset } from '../../store/portfolio/index';
 import { addAsset } from '../../store/portfolio/index';
+import { Load } from '../load/Load';
+
 
 
 
@@ -24,7 +26,9 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
   const[TransactionError,setTransactionError]=useState('off')
   const [CoinAmount,setCoinAmount]=useState()
   const [Date,setDate]=useState((GetToday()).slice(2,-1))
-  let [OverviewState,setOverviewState]=useState<any>()
+  let [Time,setTime]=useState('24h')
+  const [OverviewState,setOverviewState]:any=useState();
+
 
   
   
@@ -113,11 +117,16 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
 
 
 
-  let [Time,setTime]=useState('24h')
+
   const GetData = async()=>{
     const response = await fetch (`https://api.coinranking.com/v2/coin/${id}?timePeriod=${Time}`)
-    const x= await response.json().then((i)=>{return i.data.coin })
-    setOverviewState(x)
+    if(!response.ok){
+      throw new Error ('there was a problem fetching data')
+    }else{
+
+      const x= await response.json().then((i)=>{return i.data.coin })
+      setOverviewState(x)
+    }
 
     }
 
@@ -148,63 +157,73 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
     }
   }
 
+  const handleLoad = ()=>{
+    if(!OverviewState){
+      return(<Load/>)
+    }else{
+      return(
+        <div className={styles.overvieww}>
+
+        <div >
+            <div className={styles.des}>
+            <h1>{OverviewState!=undefined?OverviewState.name:'ss'}</h1>
+            
+            <p>{OverviewState!=undefined?OverviewState.description:'ss'}</p>
+            
+            </div>
+    
+    
+    
+            
+            <div className={styles.timefield}>
+              <button onClick={()=>handleTimePeriod(24) }>24h</button>
+              <button onClick={()=>handleTimePeriod(7)}>7d</button>
+              <button onClick={()=>handleTimePeriod(30)}>1m</button>
+              <button onClick={()=>handleTimePeriod(365)}>1y</button>
+            </div>
+    
+            
+            <div className={styles.charts}>
+    
+            {chartP()}
+            <div className={styles.transaction}>
+              <p>balance:{portfolioData.Revenue}$</p>
+              <p>amount of {OverviewState?OverviewState.name:'ss'}:{OverviewState?amount():'ss'}</p>
+              <input type="number" onChange={handleInputChange}/>
+              <button onClick={()=>handleTransaction('buy')}>buy</button>
+              <button  onClick={()=>handleTransaction('sell')}>sell</button>
+              {handleTransactionError()}
+    
+            </div>
+              <div className={styles.info}>
+                <p>marketCap:  {OverviewState!=undefined?ConvertToUsd(OverviewState.marketCap):'ss'}</p>
+                <p>number Of Exchanges:   {OverviewState!=undefined?OverviewState.numberOfExchanges:'ss'}</p>
+                <p>number Of Markets:  {OverviewState!=undefined?OverviewState.numberOfMarkets:'ss'}</p>
+                <p>price:  {OverviewState!=undefined?ConvertToUsd(OverviewState.price):'ss'}</p>
+                <p>change:  {OverviewState!=undefined?OverviewState.change:'ss'}</p>
+                <p>website:  {OverviewState!=undefined?<a href={`${OverviewState.websiteUrl}`}>{OverviewState.websiteUrl}</a>:'ss'}</p>
+              </div>
+                
+    
+            </div>
+    
+            
+    
+        </div>
+    
+    
+        </div>
+
+      )
+    }
+  }
 
 
-  console.log(OverviewState)
+  
   return (
     <>
-
-    <div className={styles.overvieww}>
-
-    <div >
-        <div className={styles.des}>
-        <h1>{OverviewState!=undefined?OverviewState.name:'ss'}</h1>
-        
-        <p>{OverviewState!=undefined?OverviewState.description:'ss'}</p>
-        
-        </div>
-
-
-
-        
-        <div className={styles.timefield}>
-          <button onClick={()=>handleTimePeriod(24) }>24h</button>
-          <button onClick={()=>handleTimePeriod(7)}>7d</button>
-          <button onClick={()=>handleTimePeriod(30)}>1m</button>
-          <button onClick={()=>handleTimePeriod(365)}>1y</button>
-        </div>
-
-        
-        <div className={styles.charts}>
-
-        {chartP()}
-        <div className={styles.transaction}>
-          <p>balance:{portfolioData.Revenue}$</p>
-          <p>amount of {OverviewState?OverviewState.name:'ss'}:{OverviewState?amount():'ss'}</p>
-          <input type="number" onChange={handleInputChange}/>
-          <button onClick={()=>handleTransaction('buy')}>buy</button>
-          <button  onClick={()=>handleTransaction('sell')}>sell</button>
-          {handleTransactionError()}
-
-        </div>
-          <div className={styles.info}>
-            <p>marketCap:  {OverviewState!=undefined?ConvertToUsd(OverviewState.marketCap):'ss'}</p>
-            <p>number Of Exchanges:   {OverviewState!=undefined?OverviewState.numberOfExchanges:'ss'}</p>
-            <p>number Of Markets:  {OverviewState!=undefined?OverviewState.numberOfMarkets:'ss'}</p>
-            <p>price:  {OverviewState!=undefined?ConvertToUsd(OverviewState.price):'ss'}</p>
-            <p>change:  {OverviewState!=undefined?OverviewState.change:'ss'}</p>
-            <p>website:  {OverviewState!=undefined?<a href={`${OverviewState.websiteUrl}`}>{OverviewState.websiteUrl}</a>:'ss'}</p>
-          </div>
-            
-
-        </div>
-
-        
-
-    </div>
-
-
-    </div>
+      
+        {handleLoad()}
     
     </>
   )

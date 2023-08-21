@@ -4,10 +4,11 @@ import React, { ReactElement, ReactNode } from 'react'
 import { useEffect,useState } from 'react'
 import { JsxClosingElement } from 'typescript';
 import { useSelector } from "react-redux";
-import { useAppDispatch, RootState, AppDispatch } from "C:/Users/abolfazl/Desktop/projects/crypto project/app/cryptoapp/src/app/store/store";
+import { useAppDispatch, RootState, AppDispatch } from "../../store/store";
 import CoinRow from './CoinRow';
 import {fetchUsers} from '../../store/coins-data/index'
 import styles from './styles/CoinRow.module.scss'
+import { Load } from '../load/Load';
 
 
 const TopCoins :React.FC = () => {
@@ -27,16 +28,20 @@ const TopCoins :React.FC = () => {
       setcoco(coinsData?.slice(first,last))
       
       }     
-    ,500)
+    ,400)
   }, [dispatch,coinsData]);
 
+  const handleShow=()=>{
+    if(!coco){
+      return(
 
+        <Load></Load>
+      )
 
-  
-  
-  return (
-    <>
-    <div className={styles.top}>
+    }else{
+      return(
+        <div>
+              <div className={styles.top}>
       Top Coins
     </div>
     
@@ -59,6 +64,19 @@ const TopCoins :React.FC = () => {
     <div className={styles.pagebuttons}>
       <button onClick={()=>{first>6?setfirst(first-7):'ss',first>6?setlast(last-7):'ss'}}>per</button><button onClick={()=>{first<42?setfirst(first+7):'ss',first<42?setlast(last+7):'ss'}}>next</button>
     </div>
+        </div>
+        
+
+      )
+    }
+  }
+
+
+  
+  
+  return (
+    <>
+      {handleShow()}
     </>
   )
 }

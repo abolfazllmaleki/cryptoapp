@@ -2,10 +2,33 @@
 import React, { useEffect, useState } from 'react'
 import styles from './styles/Header.module.scss'
 import { useRouter } from 'next/navigation';
-export  const Header:React.FC = ()=>{
+
+import { Console } from 'console';
+export  const Header:React.FC = ({stheme}:any)=>{
 
     const [suggest,setsuggest]=useState('')
     const [results,setresults]=useState<any>()
+    const [theme,settheme]=useState('dark')
+
+    const send=()=>{
+        stheme(theme)
+    }
+    
+
+
+    const handletheme:any=(e:any)=>{
+
+        if(theme=='light'){
+            settheme('dark')
+        }else if (theme=='dark'){
+            settheme('light')
+        }
+        
+    }
+    useEffect(()=>{
+        send()
+    }
+    ,[theme])
 
     const handleroute=(x:any)=>{
         setsuggest('')
@@ -62,7 +85,7 @@ export  const Header:React.FC = ()=>{
     }
 
     return(
-        <div className={styles.Header} >
+        <div className={styles.Header}  >
 
             <div className={styles.parts}>
                 <p onClick={()=>{router.push('/')}}>Home</p>
@@ -70,6 +93,10 @@ export  const Header:React.FC = ()=>{
                 <p>About</p>
             </div>
             <div className={styles.search}>
+
+                <div className={styles.toog}  >
+                <input type="checkbox" id="switch" onClick={()=>{handletheme()}} /><label htmlFor='switch'></label>   
+                </div>
          
                 <p className={styles.searchl}>search:</p>
                 <form onSubmit={()=>setsearch('search...')}>
@@ -77,6 +104,7 @@ export  const Header:React.FC = ()=>{
                     {show()}
                 </form>
                 </div>
+                
             
 
         </div>
