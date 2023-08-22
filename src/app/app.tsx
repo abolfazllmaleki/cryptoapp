@@ -8,7 +8,7 @@ import { Footer } from './components/footer/Footer'
 import styles from '../app/styles/main.module.scss'
 import Page from '../app/page'
 import { ReactNode, useState } from "react";
-import { Header } from './components/header/Header'
+import {Header}  from './components/header/Header'
 
 
 
@@ -25,18 +25,13 @@ export  const ThemeProvider=({children}:Props)=>{
     const [Theme,setTheme] = useState('dark');
     
 
-    const getData=(x:any)=>{
-        setTheme(x)
-
-    }
-
 
     const handlleTheme=()=>{
         if(Theme=='light'){
             return(
                 <div className={styles.containerlight}>
 
-                <Header stheme={(x:any)=>getData(x)}></Header>
+                <Header stheme={(x: any)=>setTheme(x)}></Header>
                 
             
                     {children}
@@ -50,7 +45,7 @@ export  const ThemeProvider=({children}:Props)=>{
             return(
                 <div className={styles.containerdark}>
 
-                <Header stheme={(x:any)=>{setTheme(x)}}></Header>
+                <Header stheme={(x:any)=>setTheme(x)}></Header>
                 
             
                     {children}
