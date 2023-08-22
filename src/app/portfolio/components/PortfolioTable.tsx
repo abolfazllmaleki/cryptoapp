@@ -20,8 +20,10 @@ const PortfolioTable:React.FC = () => {
         <div className={styles.container}>
             <div>Portfolio</div>
             <div>
-                {portfolioData.map((i:{logo:any;coin:any;amount:any;Symbol:any})=>
-                <div className={styles.fullrow} onClick={()=>{router.push(`/${i.uuid}`)}}>
+                {portfolioData.map((i:{
+                    [x: string]: any;logo:any;coin:any;amount:any;Symbol:any
+})=>
+                <div className={styles.fullrow} onClick={()=>{router.push(`/${i.uuid}`)}} key={i.logo}>
                     <img className={styles.logo} src={i.logo}/>
                     <div className={styles.row}> 
                     

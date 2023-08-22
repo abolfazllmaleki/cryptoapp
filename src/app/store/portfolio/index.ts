@@ -17,6 +17,7 @@ interface AssetTypes{
     amount:Number;
     logo:string;
     Symbol:string;
+    uuid:string;
 
 
 }
@@ -25,27 +26,22 @@ interface AssetTypes{
 
 const initialState:portfolioDataTypes={
     Asset: [
-        { coin: 'Ethereum', amount: 5, logo: 'https://cdn.coinranking.com/rk4RKHOuW/eth.svg', Symbol: 'ETH' },
-        { coin: 'USDC', amount: 80, logo: 'https://cdn.coinranking.com/jkDf8sQbY/usdc.svg', Symbol: 'USDC' }
+        {coin: 'Ethereum', amount: 1, logo: 'https://cdn.coinranking.com/rk4RKHOuW/eth.svg', Symbol: 'ETH', uuid: 'razxDUgYGNAdQ'},
+    
+        {coin: 'BNB', amount: 4, logo: 'https://cdn.coinranking.com/B1N19L_dZ/bnb.svg', Symbol: 'BNB', uuid: 'WcwrkfNI4FUAe'},
+    
+        {coin: 'Tether USD', amount: 987, logo: 'https://cdn.coinranking.com/mgHqwlCLj/usdt.svg', Symbol: 'USDT', uuid: 'HIVsRcGKkPFtW'},
     ],
     transactions: [
-        { coin: 'Bitcoin', amount: 10, transactionType: 'buy', date: '5 july', logo: 'https://cdn.coinranking.com/bOabBYkcX/bitcoin_btc.svg' },
+         
 
-
-        { coin: 'Tether USD', amount: 10, transactionType: 'buy', date: '7 Augus', logo: 'https://cdn.coinranking.com/mgHqwlCLj/usdt.svg' },
-
-
-        { coin: 'Tether USD', amount: 2, transactionType: 'sell', date: '7 Augus', logo: 'https://cdn.coinranking.com/mgHqwlCLj/usdt.svg' },
-
-
-        { coin: 'XRP', amount: 8, transactionType: 'buy', date: '7 Augus', logo: 'https://cdn.coinranking.com/B1oPuTyfX/xrp.svg' }
+    {coin: 'Ethereum', amount: 1, transactionType: 'buy', date: '4 Augus', logo: 'https://cdn.coinranking.com/rk4RKHOuW/eth.svg',uuid:"razxDUgYGNAdQ"}
     ],
     Revenue: 10000,
     logo: "",
     amount: 0,
 
 }
-
 
 const portfolioDataSlice=createSlice({
     name:"portfolioData",

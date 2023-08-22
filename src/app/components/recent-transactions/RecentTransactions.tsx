@@ -12,7 +12,7 @@ const RecentTransactions:React.FC = ()=>{
 const portfolioData :any[]= useSelector((state: RootState) => state.portfolioData.transactions.slice(0,5||state.portfolioData.transactions.length))
 const router = useRouter()
 
-    
+    console.log(portfolioData)
 
 
 
@@ -22,7 +22,7 @@ const router = useRouter()
             <div>recent transactions</div>
             <div>
                 {portfolioData.map(i=>
-                <div className={styles.fullrow} onClick={()=>{router.push(`/${i.uuid}`)}}>
+                <div className={styles.fullrow} onClick={()=>{router.push(`/${i.uuid}`)}} key={i.uuid}>
                     <img className={styles.logo} src={i.logo}/>
                     <div className={styles.row}>  
                           <p>{i.transactionType} {i.coin}</p>

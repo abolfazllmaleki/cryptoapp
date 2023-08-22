@@ -23,7 +23,7 @@ const ThemeContext = createContext({})
 
 export  const ThemeProvider=({children}:Props)=>{
     const [Theme,setTheme] = useState('dark');
-    console.log(Theme)
+    
 
     const getData=(x:any)=>{
         setTheme(x)

@@ -33,7 +33,7 @@ export  const Header:React.FC = ({stheme}:any)=>{
     const handleroute=(x:any)=>{
         setsuggest('')
         router.push(`${x.uuid}`)
-        console.log(suggest)
+        
         
     }
     const show = ()=>{
@@ -70,7 +70,7 @@ export  const Header:React.FC = ({stheme}:any)=>{
         const response = await fetch (`https://api.coinranking.com/v2/search-suggestions?query=${suggest}`)
         const x= await response.json().then((i)=>{return i.data.coins })
         setresults(x.slice(0,1))
-        console.log(results)
+        
         }
     
       useEffect(()=>{
