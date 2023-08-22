@@ -13,11 +13,13 @@
     h1{
         font-weight:800;
         letter-spacing: 1px;
+        margin: 5%;
         
     }
     h3{
         color: unset;
         font-style: italic;
+        margin: 5%;
     }
     animation-name: mymove;
     animation-duration: 1s;
@@ -32,7 +34,7 @@
     position: relative;
     top: 70px;
     
-    margin: 1%;
+    margin: 5%;
 }
 .herobutton{
     cursor: pointer;
@@ -45,6 +47,8 @@
     align-items: center;
     color: rgba(255, 255, 255, 0.908);
     text-transform: uppercase;
+    margin: 5%;
+    text-align: center;
     
 }
 
@@ -81,3 +85,45 @@
         opacity: 1;
     }
   }
+
+@media (max-width:475px){
+    .container{
+        display: block;
+        // padding: 5%;
+        // margin: 3%;
+        margin-top: 10%;
+        width: 100%;
+        
+        h1{
+            font-size: larger;
+            margin: 2%;
+            font-weight: 500;
+        }
+        h3{
+            font-size: small;
+            margin: 2%;
+            margin-top: 10%;
+            margin-bottom: 10%;
+            
+        }
+
+    }
+    .herobutton{
+        font-size: smaller;
+        margin-inline: 20%;
+        padding-inline: 10%;
+        text-align: center;
+
+    }
+    .heroimage{
+        width: 300px;
+        height: 500px;
+        background-size:contain;
+        background-repeat: no-repeat;
+        position: relative;
+        top: 70px;
+        
+        margin: 8%;
+    }
+
+}

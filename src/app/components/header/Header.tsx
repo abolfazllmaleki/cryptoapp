@@ -86,7 +86,7 @@ export  const Header:React.FC = ({stheme}:any)=>{
             <div className={styles.parts}>
                 <p onClick={()=>{router.push('/')}}>Home</p>
                 <p onClick={()=>{router.push('/portfolio')}}>Portfolio</p>
-                <p>About</p>
+                <p onClick={()=>{router.push('/about')}}>About</p>
             </div>
             <div className={styles.search}>
 

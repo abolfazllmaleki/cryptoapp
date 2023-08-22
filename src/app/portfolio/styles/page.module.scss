@@ -14,3 +14,15 @@
     height: 25%;
 }
 
+@media (max-width:475px){
+    .container{
+        display: block;
+        // div{
+        //     width: 100%;
+        // }
+    }
+    .chart{
+        width: 100%;
+    }
+
+  }

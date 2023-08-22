@@ -42,12 +42,13 @@
     }
 }
 .sugrow{
-    margin: 1%;
+    position: relative;
+    left: -40%;
     display: flex;
     width: 100%;
     flex-direction: row;
     justify-content: space-between;
-    padding:2%;
+
     cursor: pointer;
     :hover{
         background-color: #4285F4;
@@ -126,4 +127,31 @@
       }
     
   }
-  
+  @media (max-width:475px){
+    .parts{
+        font-size: x-small;
+
+    }
+    .sugrow{
+        position: relative;
+        left: -100%;}
+    .search{
+        width: 20px;
+        margin: 0;
+        padding: 0;
+        position: relative;
+        right:100px;
+        p{
+            font-size: xx-small;
+        }
+        input{
+            width: 100px;
+        }
+        .toog{
+            position: relative;
+            right: 50px;
+            width: 40px;
+        }
+
+    }
+  }

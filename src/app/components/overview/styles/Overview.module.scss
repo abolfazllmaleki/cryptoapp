@@ -111,3 +111,18 @@
 .Error{
     color: red;
 }
+@media (max-width:475px){
+    .overvieww{
+        display: block;
+        .charts{
+            display: block;
+            margin-bottom: 5%;
+            padding-top: 5%;
+        }
+    }
+    .transaction{
+        width: 50%;
+    }
+
+
+  }

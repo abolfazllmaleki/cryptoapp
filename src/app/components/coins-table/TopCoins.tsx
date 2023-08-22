@@ -46,7 +46,7 @@ const TopCoins :React.FC = () => {
     </div>
     
     <div className={styles.coinroww}>
-        <div className='name'>name</div>
+        <div className='name'># name</div>
         <div className='price'> price </div>
         <div className='market'> marketcap</div>
         <div>24h change</div>
