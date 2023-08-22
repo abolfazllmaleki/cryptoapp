@@ -24,11 +24,11 @@
         padding: 1%;
         background-color: unset;
         color: unset;
-        border-color: unset;
+        border: 1px solid #4285F4 ;
         
         
     }:hover{
-        background-color:#336600;
+        background-color:#4285F4;
         transition: ease-in 0.2s;
         color: white;
     }
@@ -44,21 +44,69 @@
 }
 .info{
     width: 100%;
+    min-width:fit-content;
     background-color:#c0c0c023;
     padding:5%;
     margin: 1%;
+    border-radius: 5%;
+    border: 1px solid #4285F4 ;
     height: fit-content;
     // border: 1px  solid black;
     box-shadow: 0 3px 3px rgba(0,0,0,0.2);
+    p{
+        display: flex;
+        flex-direction: row;
+        
+        align-items: center;
+        p{
+            margin:5px;
+        }
+    }
 
 }
 .transaction{
+    border-radius: 5%;
     width: 50%;
+    min-width: fit-content;
     background-color: #c0c0c023;
     box-shadow: 0 3px 3px rgba(0,0,0,0.2);
     height: fit-content;
     padding: 1%;
     margin: 1%;
+    border: 1px solid #4285F4 ;
+    button{
+        background-color: #4285F4;
+
+        width: fit-content;
+        padding: 3%;
+        border-radius: 10%;
+        color: rgba(255, 249, 249, 0.845);
+        transition: 0.2s;
+        border: none;
+        margin: 4%;
+        &:hover{
+            transform: scale(1.3);
+            transition: transform 0.2s;
+        }
+        &:active{
+            transform: scale(0.7);
+            transition: transform 0.2s;
+
+        }
+    }
+    input{
+        border: none;
+        background-color: unset;
+        border-bottom: 1px solid rgba(88, 86, 86, 0.727);
+        border-top: 1px solid rgba(96, 92, 92, 0.727);
+        outline: none;
+        color: unset;
+        height: 3vh;
+        :focus{
+            outline: none;
+        }
+
+    }
 }
 .Error{
     color: red;

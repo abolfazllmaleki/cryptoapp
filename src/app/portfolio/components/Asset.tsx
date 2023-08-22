@@ -11,7 +11,7 @@ const Asset :React.FC = () => {
     const buttonShow=()=>{
         if(shown==1){
             return(
-                <button className={styles.buttonhide} onClick={()=>{setshown(0)}}>*</button>
+                <button className={styles.buttonhide} onClick={()=>{setshown(0)}}><img alt="svgImg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCI+CjxwYXRoIGQ9Ik0gNy43MTg3NSA2LjI4MTI1IEwgNi4yODEyNSA3LjcxODc1IEwgMjMuNTYyNSAyNSBMIDYuMjgxMjUgNDIuMjgxMjUgTCA3LjcxODc1IDQzLjcxODc1IEwgMjUgMjYuNDM3NSBMIDQyLjI4MTI1IDQzLjcxODc1IEwgNDMuNzE4NzUgNDIuMjgxMjUgTCAyNi40Mzc1IDI1IEwgNDMuNzE4NzUgNy43MTg3NSBMIDQyLjI4MTI1IDYuMjgxMjUgTCAyNSAyMy41NjI1IFoiPjwvcGF0aD4KPC9zdmc+"/></button>
                 
 
             )
@@ -29,16 +29,19 @@ const Asset :React.FC = () => {
         return(
             <div className={styles.depo}>
             <div className={styles.amountinput}>
-                <p>amount:</p>
+                
+                <p>$</p>
                 <input type="number" alt='amount' />
 
             </div>
             <div className={styles.depowith}>
             <div className={styles.deposit}>
-                <p>deposit</p>
+                <button>Deposit</button>
             </div>
             <div className={styles.withdrawal}>
-                <p>withdrawal</p>
+                <button>
+                withdrawal
+                    </button>
             </div>
 
             </div>
@@ -56,7 +59,7 @@ const Asset :React.FC = () => {
     <div className={styles.Asset}> 
 
         <div className={styles.add}>
-            <p>total revenue</p>
+            <p> Total Revenue</p>
             <p>$500</p>
             {buttonShow()}
             

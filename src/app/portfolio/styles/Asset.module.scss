@@ -7,6 +7,7 @@
     width: 20vw;
     min-width: fit-content;
 
+
     height: fit-content;
     border-radius: 8%;
     padding: 10%;
@@ -14,10 +15,17 @@
     font-family: "Roboto";
     font-weight: 500;
     font-size: small;
+    border: 1px solid #4285F4 ;
+    animation-name: ani;
+    animation-duration: 0.5s;
     button{
-        background-color: #dfdada23;
+        background-color: #4285F4;
+        width: 30%;
+        padding: 1%;
         border: none;
         cursor: pointer;
+        color: white;
+        border-radius: 10%;
         &:hover{
             
             transform: scale(1.2);
@@ -37,8 +45,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    p{
+        font-weight: 600;
+        font-size: large;
+        
+    }
     button:hover{
-        background-color: rgba(27, 185, 40, 0.568);
+        background-color: #4285F4;
         transition: 0.3s;
 
     }
@@ -46,21 +59,62 @@
 }
 .depo{
     width: 100%;
-    background-color: #c0c0c023;
+    background-color: unset;
     height: 30%;
 }
 .amountinput{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    p{
+        font-size: large;
+    }
+    input{
+        
+        border: none;
+        background-color: unset;
+        border-bottom: 1px solid rgba(88, 86, 86, 0.727);
+        border-top: 1px solid rgba(96, 92, 92, 0.727);
+        outline: none;
+        color: unset;
+        height: 5vh;
+
+    }
 }
 .depowith{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     transition: ease-out 0.5s;
+    padding: 3%;
+    button{
+        width: fit-content;
+        padding: 10%;
+        border-radius: 10%;
+        color: rgba(255, 249, 249, 0.845);
+        transition: 0.2s;
+    }
 
 }
 .buttonshow{
     font-size: smaller;
+    background-color: #4285F4;
 
+}
+.buttonhide{
+    width: fit-content;
+    img{
+        height: 2vh;
+        width: 2vw;
+    }
+}
+
+@keyframes ani{
+    0%{
+        top:20%
+    }
+    100%{
+        top: 0%;
+    }
 }

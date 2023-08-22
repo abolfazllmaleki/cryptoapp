@@ -3,6 +3,7 @@ import { Footer } from "./components/footer/Footer"
 import {ThemeProvider} from "./app"
 import styles from '../app/styles/main.module.scss'
 import { useState } from "react"
+import '../app/styles/global.scss'
 
 export const metadata = {
   title: 'Next.js',

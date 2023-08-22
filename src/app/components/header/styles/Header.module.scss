@@ -28,15 +28,16 @@
 
 .sug{
     display: flex;
-    background-color: white;
+    background-color: unset;
     flex-direction: column;
     position: absolute;
     width: 8%;
     right:0.1%;
     cursor: pointer;
+    color: unset;
 
     :hover{
-        background-color: rgba(27, 185, 40, 0.568);
+        background-color: #4285F4;
         cursor: pointer;
     }
 }
@@ -48,6 +49,10 @@
     justify-content: space-between;
     padding:2%;
     cursor: pointer;
+    :hover{
+        background-color: #4285F4;
+        cursor: pointer;
+    }
 }
 
 .search{
@@ -55,9 +60,13 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+
     input{
+        border: none;
+        border-bottom: 1px solid white;
         background-color:unset;
     }
+    
     
     .searchl{
         margin-right: 5px;
@@ -87,7 +96,7 @@
         height: 3vh;
         background: #121212;
         display: block;
-        border-radius: 10%;
+        border-radius: 50%;
         position: relative;
       }
       
@@ -96,10 +105,10 @@
         position: absolute;
         top: 5px;
         left: 5px;
-        width: 3vw;
+        width: 2vw;
         height:2vh;
-        background: #fff;
-        border-radius:40%;
+        background: #4285F4;
+        border-radius:55%;
         transition: 0.3s;
       }
       

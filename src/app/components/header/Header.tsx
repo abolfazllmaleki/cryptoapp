@@ -46,10 +46,6 @@ export  const Header:React.FC = ({stheme}:any)=>{
                     <div className={styles.sugrow} onClick={()=>handleroute(x)}>
                         <p>{x.name}</p>
                         <p>{x.symbol}</p>
-
-
-
-                        
                     </div> 
                 
                 )}
@@ -73,7 +69,7 @@ export  const Header:React.FC = ({stheme}:any)=>{
     const GetData = async()=>{
         const response = await fetch (`https://api.coinranking.com/v2/search-suggestions?query=${suggest}`)
         const x= await response.json().then((i)=>{return i.data.coins })
-        setresults(x.slice(0,3))
+        setresults(x.slice(0,1))
         console.log(results)
         }
     

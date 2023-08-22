@@ -7,13 +7,17 @@ import { Provider } from "react-redux"
 import { store } from './store/store'
 import { Header } from './components/header/Header'
 import { Hero } from './components/hero/Hero'
+import styles from '../app/styles/main.module.scss'
 
 
 const page :React.FC = () => {
   return (
     <>
+      <div className={styles.container}>
+
         <Hero></Hero>  
         <TopCoins></TopCoins>
+      </div>
     
     
     </>

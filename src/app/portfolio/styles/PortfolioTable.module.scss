@@ -15,6 +15,7 @@
     font-size: small;
     background-color: #c0c0c023;
     margin: 7%;
+    border: 1px solid #4285F4 ;
 
 
 
@@ -43,4 +44,9 @@
     display: flex;
     width: 100%;
     flex-direction: row;
+    :hover{
+        color: #4285F4;
+        transition: 0.2s;
+        cursor: pointer;
+    }
 }

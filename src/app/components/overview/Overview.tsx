@@ -30,6 +30,7 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
   const [OverviewState,setOverviewState]:any=useState();
 
 
+
   
   
   const handleTransactionError=()=>{
@@ -52,7 +53,7 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
   const handleTransaction=(x:string)=>{
     if(x=='buy'){
       if(portfolioData.Revenue>=OverviewState.price*inputAmount){
-        dispatch(add({coin:`${OverviewState.name}`,amount:Number(inputAmount),transactionType:'buy',date:Date,logo:OverviewState.iconUrl}));
+        dispatch(add({coin:`${OverviewState.name}`,amount:Number(inputAmount),transactionType:'buy',date:Date,logo:OverviewState.iconUrl,uuid:OverviewState.uuid}));
         dispatch(setRevenue(portfolioData.Revenue-OverviewState.price*inputAmount))
         setTransactionError('off')
         let j =0;
@@ -64,7 +65,7 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
           }
         }
         if(j==0){
-          dispatch(addAsset({coin:OverviewState.name,amount:inputAmount,logo:OverviewState.iconUrl,Symbol:OverviewState.symbol}))
+          dispatch(addAsset({coin:OverviewState.name,amount:inputAmount,logo:OverviewState.iconUrl,Symbol:OverviewState.symbol,uuid:OverviewState.uuid}))
         }
 
       }else{
@@ -117,7 +118,17 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
 
 
 
-
+  const showChange=()=>{
+    if(OverviewState.change>=0){
+      return(
+        <p>change :  <p style={{color:'green'}}>+{OverviewState!=undefined?OverviewState.change:'ss'}</p> </p>
+      )
+    }else{
+      return(
+        <p>change : <p style={{color:'red'}}>{OverviewState!=undefined?OverviewState.change:'ss'}</p> </p>
+      )
+    }
+  }
   const GetData = async()=>{
     const response = await fetch (`https://api.coinranking.com/v2/coin/${id}?timePeriod=${Time}`)
     if(!response.ok){
@@ -187,21 +198,24 @@ const Overview :React.FC<OverviewProps> = ({id='Qwsogvtv82FCd'}) => {
     
             {chartP()}
             <div className={styles.transaction}>
-              <p>balance:{portfolioData.Revenue}$</p>
-              <p>amount of {OverviewState?OverviewState.name:'ss'}:{OverviewState?amount():'ss'}</p>
+              <div>
+
+              <p>balance :{Number(portfolioData.Revenue).toFixed(2)}$</p>
+              <p>amount of {OverviewState?OverviewState.name:'ss'} :{OverviewState?amount():'ss'}</p>
               <input type="number" onChange={handleInputChange}/>
               <button onClick={()=>handleTransaction('buy')}>buy</button>
               <button  onClick={()=>handleTransaction('sell')}>sell</button>
               {handleTransactionError()}
+              </div>
     
             </div>
               <div className={styles.info}>
-                <p>marketCap:  {OverviewState!=undefined?ConvertToUsd(OverviewState.marketCap):'ss'}</p>
-                <p>number Of Exchanges:   {OverviewState!=undefined?OverviewState.numberOfExchanges:'ss'}</p>
-                <p>number Of Markets:  {OverviewState!=undefined?OverviewState.numberOfMarkets:'ss'}</p>
-                <p>price:  {OverviewState!=undefined?ConvertToUsd(OverviewState.price):'ss'}</p>
-                <p>change:  {OverviewState!=undefined?OverviewState.change:'ss'}</p>
-                <p>website:  {OverviewState!=undefined?<a href={`${OverviewState.websiteUrl}`}>{OverviewState.websiteUrl}</a>:'ss'}</p>
+                <p>marketCap :  {OverviewState!=undefined?ConvertToUsd(OverviewState.marketCap):'ss'}</p>
+                <p>number Of Exchanges :   {OverviewState!=undefined?OverviewState.numberOfExchanges:'ss'}</p>
+                <p>number Of Markets :  {OverviewState!=undefined?OverviewState.numberOfMarkets:'ss'}</p>
+                <p>price :  {OverviewState!=undefined?ConvertToUsd(OverviewState.price):'ss'}</p>
+                {showChange()}
+                <p>website : {OverviewState!=undefined?<a href={`${OverviewState.websiteUrl}`}>{OverviewState.websiteUrl}</a>:'ss'}</p>
               </div>
                 
     
