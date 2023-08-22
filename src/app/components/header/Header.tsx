@@ -4,7 +4,9 @@ import styles from './styles/Header.module.scss'
 import { useRouter } from 'next/navigation';
 
 import { Console } from 'console';
-export  const Header:React.FC = ({stheme}:any)=>{
+
+
+export const Header:any = ({stheme}:any)=>{
 
     const [suggest,setsuggest]=useState('')
     const [results,setresults]=useState<any>()
