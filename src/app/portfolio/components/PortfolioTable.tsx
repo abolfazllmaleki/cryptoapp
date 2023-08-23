@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import styles from '../styles/PortfolioTable.module.scss';
 import { useSelector } from "react-redux";
-import { useAppDispatch, RootState, AppDispatch } from "C:/Users/abolfazl/Desktop/projects/crypto project/app/cryptoapp/src/app/store/store";
+import { useAppDispatch, RootState, AppDispatch } from "../../store/store";
 import { useRouter } from 'next/navigation';
 
 
